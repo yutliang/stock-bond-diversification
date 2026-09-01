@@ -101,12 +101,13 @@ For 2020 and 2022, cumulative wealth is reset at the beginning of each year so t
 
 Diversification protection is defined as:
 
+````markdown
 ```math
-\text{Protection}
+\mathrm{Protection}
 =
-|\operatorname{MaxDD}_{Stock}|
+|\mathrm{MaxDD}_{Stock}|
 -
-|\operatorname{MaxDD}_{60/40}|
+|\mathrm{MaxDD}_{60/40}|
 ```
 
 A larger value means that the 60/40 allocation absorbs a greater portion of the equity drawdown.
@@ -123,7 +124,7 @@ w_S^2\sigma_S^2
 +
 w_B^2\sigma_B^2
 +
-2w_Sw_B\operatorname{Cov}(S,B)
+2w_Sw_B\mathrm{Cov}(S,B)
 ```
 
 This separates three sources of portfolio risk:

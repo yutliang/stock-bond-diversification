@@ -162,7 +162,7 @@ R_{B,t}
 \varepsilon_t
 ```
 
-where \(H_t\) identifies the ECB hiking regime.
+where $H_t$ identifies the ECB hiking regime.
 
 HAC standard errors with five lags are used to reduce the risk of overstating statistical significance in daily financial-return data.
 

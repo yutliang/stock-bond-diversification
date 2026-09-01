@@ -44,13 +44,13 @@ The bond ETF represents intermediate- to long-duration euro-area government bond
 
 A constant-weight 60/40 benchmark is constructed as:
 
-$$
+```math
 R_{60/40,t}
 =
 0.6R_{Stock,t}
 +
 0.4R_{Bond,t}
-$$
+```
 
 This provides a transparent benchmark for measuring how much downside protection the bond allocation adds relative to equities alone.
 
@@ -101,13 +101,13 @@ For 2020 and 2022, cumulative wealth is reset at the beginning of each year so t
 
 Diversification protection is defined as:
 
-$$
+```math
 \text{Protection}
 =
 |\operatorname{MaxDD}_{Stock}|
 -
 |\operatorname{MaxDD}_{60/40}|
-$$
+```
 
 A larger value means that the 60/40 allocation absorbs a greater portion of the equity drawdown.
 
@@ -116,7 +116,7 @@ A larger value means that the 60/40 allocation absorbs a greater portion of the 
 
 The historical comparison then motivates a decomposition of portfolio variance:
 
-$$
+```math
 \sigma_P^2
 =
 w_S^2\sigma_S^2
@@ -124,7 +124,7 @@ w_S^2\sigma_S^2
 w_B^2\sigma_B^2
 +
 2w_Sw_B\operatorname{Cov}(S,B)
-$$
+```
 
 This separates three sources of portfolio risk:
 
@@ -148,7 +148,7 @@ Both metrics are calculated for stocks, bonds, and the 60/40 portfolio in 2020 a
 
 Descriptive regime evidence is complemented by an interaction regression:
 
-$$
+```math
 R_{B,t}
 =
 \alpha
@@ -160,7 +160,7 @@ R_{B,t}
 \beta_3(R_{S,t}H_t)
 +
 \varepsilon_t
-$$
+```
 
 where \(H_t\) identifies the ECB hiking regime.
 
@@ -337,15 +337,15 @@ The scenario grid evaluates equity shocks from -10% to -30% and bond shocks from
 
 For each simultaneous shock combination:
 
-$$
+```math
 S_P
 =
 0.6S_E
 +
 0.4S_B
-$$
+```
 
-where \(S_E\), \(S_B\), and \(S_P\) denote the equity, bond, and 60/40 portfolio shocks.
+where $S_E$, $S_B$, and $S_P$ denote the equity, bond, and 60/40 portfolio shocks.
 
 The framework does not forecast future returns or assign probabilities. Its purpose is to measure how portfolio protection changes as the severity of bond stress changes relative to equity stress.
 
@@ -354,19 +354,19 @@ The framework does not forecast future returns or assign probabilities. Its purp
 
 The relative severity of bond stress is summarized using the Bond Stress Ratio:
 
-$$
+```math
 BSR
 =
 \frac{|S_B|}{|S_E|}
-$$
+```
 
 For simultaneous negative equity and bond shocks, the corresponding Protection Ratio is:
 
-$$
+```math
 PR
 =
 0.4(1-BSR)
-$$
+```
 
 ![60/40 Diversification Protection under Joint Stock–Bond Shocks](../figures/diversification_protection_heatmap.png)
 

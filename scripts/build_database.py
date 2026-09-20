@@ -19,6 +19,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_DATA_DIR = PROJECT_ROOT / "data" / "raw"
 DATABASE_PATH = PROJECT_ROOT / "data" / "processed" / "portfolio.db"
 SCHEMA_PATH = PROJECT_ROOT / "sql" / "schema.sql"
+ANALYSIS_QUERIES_PATH = PROJECT_ROOT / "sql" / "analysis_queries.sql"
 
 HICP_PATH = RAW_DATA_DIR / "ECB Data Portal_20260817160023.csv"
 ECB_RATE_PATH = RAW_DATA_DIR / "ECB Data Portal_20260818182339.csv"
@@ -127,6 +128,9 @@ def build_database() -> None:
             prices.to_sql("asset_prices", connection, if_exists="append", index=False)
             hicp.to_sql("hicp_monthly", connection, if_exists="append", index=False)
             ecb_rates.to_sql("ecb_rates", connection, if_exists="append", index=False)
+            connection.executescript(
+                ANALYSIS_QUERIES_PATH.read_text(encoding="utf-8")
+            )
             connection.execute("PRAGMA optimize")
             connection.commit()
         finally:
@@ -150,6 +154,17 @@ def build_database() -> None:
                 """
             ).fetchone()
             print(f"{table}: rows={row[0]}, dates={row[1]} to {row[2]}")
+        analysis_row = connection.execute(
+            """
+            SELECT COUNT(*), MIN(trade_date), MAX(trade_date)
+            FROM daily_analysis
+            """
+        ).fetchone()
+        print(
+            "daily_analysis: "
+            f"rows={analysis_row[0]}, "
+            f"dates={analysis_row[1]} to {analysis_row[2]}"
+        )
 
 
 if __name__ == "__main__":

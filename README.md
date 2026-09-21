@@ -91,9 +91,18 @@ A low stock–bond correlation does not necessarily imply strong diversification
 ```text
 stock_bond_diversification/
 ├── data/
+│   ├── raw/                         # ECB source CSV files
+│   └── processed/
+│       └── portfolio.db             # Generated locally; ignored by Git
 ├── figures/
 ├── notebooks/
 │   └── 01_market_data.ipynb
+├── scripts/
+│   ├── build_database.py
+│   └── validate_sql_layer.py
+├── sql/
+│   ├── schema.sql
+│   └── analysis_queries.sql
 ├── summary/
 │   └── final_synthesis.md
 └── README.md
@@ -102,6 +111,7 @@ stock_bond_diversification/
 ## Tools and Data
 
 - Python
+- SQLite
 - pandas
 - NumPy
 - matplotlib
@@ -110,6 +120,21 @@ stock_bond_diversification/
 - ECB Data Portal
 - Euro-area HICP inflation
 - ECB policy-rate data
+
+## SQL Data Layer
+
+The SQLite data layer uses two data sources:
+
+- **Yahoo Finance**: adjusted closing prices for `IMAE.AS`, `IBGM.AS`, and `X710.DE`.
+- **ECB Data Portal**: monthly euro-area HICP inflation and ECB deposit facility rates.
+
+Three views are defined in `sql/analysis_queries.sql`:
+
+| View | Purpose |
+|---|---|
+| `daily_asset_returns` | Calculate daily ETF returns |
+| `daily_analysis` | Combine stock, bond, and 60/40 returns with inflation, ECB rates, rate changes, and regime flags |
+| `annual_summary` | Summarize trading-day counts, average daily returns, average inflation, and policy-rate ranges by year |
 
 ## Full Research Note
 

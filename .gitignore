@@ -2,3 +2,8 @@
 .ipynb_checkpoints/
 __pycache__/
 *.pyc
+
+# Generated SQLite database
+data/processed/*.db
+data/processed/*.db-*
+TODO.md
